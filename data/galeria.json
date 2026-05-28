@@ -1,0 +1,10 @@
+[
+    { "img": "obras/example.png", "title": "Obra I", "desc": "Óleo sobre lienzo", "price": "1300€", "sold": true },
+    { "img": "obras/example.png", "title": "Obra II", "desc": "Óleo sobre lienzo", "price": "450€", "sold": false },
+    { "img": "obras/example.png", "title": "Obra III", "desc": "Óleo sobre lienzo", "price": "2200€", "sold": false },
+    { "img": "obras/example.png", "title": "Obra IIII", "desc": "Óleo sobre lienzo", "price": "500€", "sold": false },
+    { "img": "obras/example.png", "title": "Obra V", "desc": "Óleo sobre lienzo", "price": "1300€", "sold": false },
+    { "img": "obras/example.png", "title": "Obra VI", "desc": "Óleo sobre lienzo", "price": "450€", "sold": true },
+    { "img": "obras/example.png", "title": "Obra VII", "desc": "Óleo sobre lienzo", "price": "1200€", "sold": true },
+    { "img": "obras/example.png", "title": "Obra VIII", "desc": "Óleo sobre lienzo", "price": "500€", "sold": false }
+]

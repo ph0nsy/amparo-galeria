@@ -1,0 +1,4 @@
+[
+    { "img": "obras/example.png", "title": "Nombre de la Obra A", "desc": "Óleo sobre lienzo", "price": "1.200€", "sold": true },
+    { "img": "obras/example.png", "title": "Nombre de la Obra B", "desc": "Técnica mixta", "price": "950€", "sold": false }
+]

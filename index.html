@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Amparo Moreno Ancillo | Galería</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Default favicon (fallback for unsupported browsers) -->
+    <link rel="icon" href="assets/favicon-light.ico" type="image/x-icon">
+  
+    <!-- Light mode favicon -->
+    <link rel="icon" href="assets/favicon-light.ico" type="image/x-icon" media="(prefers-color-scheme: light)">
+  
+    <!-- Dark mode favicon -->
+    <link rel="icon" href="assets/favicon-dark.ico" type="image/x-icon" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+    <div id="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-close" onclick="closeModal()">&times;</div>
+            <div class="modal-image-side">
+                <img id="modal-img" src="" alt="Obra">
+            </div>
+            <div class="modal-info-side">
+                <h2 id="modal-title">Título</h2>
+                <div id="modal-desc" class="modal-desc"></div>
+                <div id="modal-price" class="modal-price"></div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#destacados"><span class="nav-text">Destacados</span><span class="nav-icon"><i class="fa fa-star"></i></span></a></li>
+                <li><a href="#sobre-mi"><span class="nav-text">Artista</span><span class="nav-icon"><i class="fa fa-info-circle"></i></span></a></li>
+            </ul>
+            <a href="#hero-banner" class="logo-btn"><div class="inner-square"></div></a>
+            <ul class="nav-links">
+                <li><a href="#galeria"><span class="nav-text">Colección</span><span class="nav-icon"><i class="fa fa-image"></i></span></a></li>
+                <li><a href="#contacto"><span class="nav-text">Contacto</span><span class="nav-icon"><i class="fa fa-envelope"></i></span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="hero-banner" class="hero">
+        <div style="width:100%; height:100%; backdrop-filter: blur(3px); display: grid; place-items: center;">
+            <!--<h1>AMPARO</h1>-->
+            <img src="assets/nombre.png">
+        </div>
+    </div>
+
+    <section id="destacados">
+        <h2 class="section-title">Obras Destacadas</h2>
+        <div class="grid-featured" id="featured-container"></div>
+    </section>
+
+    <section id="sobre-mi">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+            <div class="about-title">  
+                <div style ="width:100%; height:100%; backdrop-filter: blur(1px);">              
+                    <h2 id="title"></h2>
+                    <p id="subtitle"></p>
+                </div>
+            </div>
+            <div class="about-text"></div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <h2 class="section-title">Galería de Obras</h2>
+        <div class="grid-gallery" id="gallery-container"></div>
+    </section>
+
+    <section id="contacto" class="contact-events">
+        <div>
+            <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Agenda</h2>
+            <div id="events-container"></div>
+        </div>
+        <div>
+            <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Contacto</h2>
+            <div class="contact-col">
+                <a href="#" class="contact-link-row"><i class="fa fa-instagram"></i> AMPARO_ART</a>
+                <a href="mailto:info@amparoart.com" class="contact-link-row"><i class="fa fa-envelope"></i> CONTACT@AMPAROART.COM</a>
+                <a href="tel:+34600000000" class="contact-link-row"><i class="fa fa-phone"></i> +34 600 000 000</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AMPARO MORENO ANCILLO | DISEÑO POR <a href="https://github.com/ph0nsy">@PH0NSY</a></p>
+    </footer>
+
+    <script>
+
+        function openModal(item) {
+            document.getElementById('modal-img').src = item.img;
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-desc').innerText = item.desc;
+            document.getElementById('modal-price').innerText = item.price;
+            document.getElementById('modal-price').innerText = item.sold ? "VENDIDO\nCOLECCIÓN PRIVADA" : item.price;
+            document.getElementById('modal-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        async function init() {
+
+            try {
+
+                const [featuredData, galleryData, eventsData, aboutData] = await Promise.all([
+                    fetch('data/destacados.json').then(res => res.json()),
+                    fetch('data/galeria.json').then(res => res.json()),
+                    fetch('data/eventos.json').then(res => res.json()),
+                    fetch('data/artista.json').then(res => res.json())
+                ]);
+
+                document.getElementById('title').innerHTML += `${aboutData.titulo}`;
+                document.getElementById('subtitle').innerHTML += `${aboutData.subtitulo}`;
+                document.querySelector('.about-text').innerHTML = aboutData.parrafos.map(p => `<p>${p}</p>`).join('');
+
+                const featContainer = document.getElementById('featured-container');
+                const gallContainer = document.getElementById('gallery-container');
+                const evenContainer = document.getElementById('events-container');
+
+                featuredData.forEach(item => 
+                {
+                    const div = document.createElement('div');
+                    div.className = 'featured-card';
+                    div.onclick = () => openModal(item);
+                    const soldHtml = item.sold ? `
+                        <div class="sold-badge">
+                            <span>Vendido</span>
+                        </div>` : '';
+
+                    div.innerHTML = `
+                        <div class="img-wrapper">
+                            ${soldHtml}
+                            <img src="${item.img}">
+                        </div>
+                        <div class="card-content">
+                            <h3>${item.title}</h3>
+                            <span class="price">${item.sold ? 'Vendido' : item.price}</span>
+                        </div>`;                
+
+                    featContainer.appendChild(div);
+                });
+
+                galleryData.forEach(item => 
+                {
+                    const div = document.createElement('div');
+                    div.className = 'gallery-item';
+                    div.onclick = () => openModal(item);
+                    const soldHtml = item.sold ? `
+                        <div class="sold-badge">
+                            <span>Vendido</span>
+                        </div>` : '';
+
+                    div.innerHTML = `
+                        <div class="img-wrapper">
+                            ${soldHtml}
+                            <img src="${item.img}">
+                        </div>
+                        <div class="gallery-info">
+                            <strong>${item.title}</strong>
+                            <br>${item.sold ? 'Vendido' : item.price}
+                        </div>`;                
+
+                    gallContainer.appendChild(div);
+                });
+
+                eventsData.forEach(item => 
+                {
+                    evenContainer.innerHTML += `
+                        <div class="event-item">
+                            <strong>${item.name}</strong>
+                            <span class="event-date">${item.date} - ${item.loc}</span>
+                        </div>`;
+                });
+                
+                // SCROLL REVEAL LOGIC
+                const observer = new IntersectionObserver(
+                    (entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); }); }, 
+                    { threshold: 0.1 }
+                );
+
+                document.querySelectorAll('section').forEach(section => observer.observe(section));
+                
+            } 
+            catch (error) 
+            {
+                console.error("Error al cargar los datos:", error);
+            }
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
