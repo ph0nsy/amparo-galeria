@@ -485,6 +485,7 @@
     .modal-info-side h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
     
     .modal-close {
+        font-size: 3rem;
         top: 1rem;
         right: 1.5rem;
         padding: 0 0.5rem;
@@ -492,9 +493,9 @@
 }
  @media (max-width: 400px) {
      .modal-close{
-         font-size: 4rem;
-         top: 0.65rem;
-         right: 1rem;
+        font-size: 4rem;
+        top: 0.65rem;
+        right: 1rem;
     }
      nav {
         gap: 1.5rem;
