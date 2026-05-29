@@ -33,21 +33,22 @@
     </div>
 
     <header>
-        <nav>
+        <a href="#hero-banner" class="logo-btn"><img src="assets/logo.png" alt="Logo"></div></a>
+        <button class="hamburger" id="hamburger-btn">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="main-nav">
             <ul class="nav-links">
-                <li><a href="#destacados"><span class="nav-text">Destacados</span><span class="nav-icon"><i class="fa fa-star"></i></span></a></li>
-                <li><a href="#sobre-mi"><span class="nav-text">Artista</span><span class="nav-icon"><i class="fa fa-info-circle"></i></span></a></li>
-            </ul>
-            <a href="#hero-banner" class="logo-btn"><div class="inner-square"></div></a>
-            <ul class="nav-links">
-                <li><a href="#galeria"><span class="nav-text">Colección</span><span class="nav-icon"><i class="fa fa-image"></i></span></a></li>
-                <li><a href="#contacto"><span class="nav-text">Contacto</span><span class="nav-icon"><i class="fa fa-envelope"></i></span></a></li>
+                <li><a href="#destacados"><span class="nav-text">Destacados</span></a></li>
+                <li><a href="#sobre-mi"><span class="nav-text">Artista</span></a></li>
+                <li><a href="#galeria"><span class="nav-text">Colección</span></a></li>
+                <li><a href="#contacto"><span class="nav-text">Contacto</span></a></li>
             </ul>
         </nav>
     </header>
 
     <div id="hero-banner" class="hero">
-        <div style="width:100%; height:100%; backdrop-filter: contrast(40%); display: grid; place-items: center;">
+        <div style="width:100%; height:100%; backdrop-filter: contrast(55%); display: grid; place-items: center;">
             <!--<h1>AMPARO</h1>-->
             <img src="assets/nombre.png">
         </div>
@@ -61,7 +62,7 @@
     <section id="sobre-mi">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 90%;">
             <div class="about-title">  
-                <div style ="width:100%; height:100%; backdrop-filter: saturate(150%) grayscale(30%) blur(3px); display: flex; flex-direction: column; justify-content: flex-end;">              
+                <div style ="width:100%; height:100%; backdrop-filter: saturate(150%) grayscale(30%) blur(2px); display: flex; flex-direction: column; justify-content: flex-end;">              
                     <h2 id="title"></h2>
                     <p id="subtitle"></p>
                 </div>
@@ -96,6 +97,16 @@
     </footer>
 
     <script>
+        document.getElementById('hamburger-btn').addEventListener('click', () => {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('main-nav').classList.remove('active');
+            });
+        });
 
         function openModal(item) 
         {

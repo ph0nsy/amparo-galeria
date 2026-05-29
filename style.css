@@ -29,7 +29,7 @@
 /* NAVIGATION */
  header {
      display: flex;
-     justify-content: center;
+     justify-content: space-between;
      align-items: center;
      padding: 1.5rem 2rem;
      background-color: rgba(255,255,255,0.95);
@@ -43,6 +43,10 @@
      align-items: center;
      gap: 3rem;
      max-width: 1200px;
+}
+ #main-nav {
+    display: flex;
+    align-items: center;
 }
  .nav-links {
      display: flex;
@@ -61,33 +65,39 @@
  .nav-links a:hover {
      color: var(--color-accent);
 }
- .nav-icon {
-     display: none;
-     font-size: 1.8rem;
-     opacity: 0.9;
+ .nav-text {
+     vertical-align: middle;
+ }
+ .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none; border: none; cursor: pointer;
+    z-index: 2000;
+}
+ .hamburger span { 
+    width: 25px; 
+    height: 2px; 
+    background: var(--color-text); 
 }
  .logo-btn {
      width: 50px;
      height: 50px;
-     border: 1px solid var(--color-text);
      display: flex;
      justify-content: center;
      align-items: center;
      cursor: pointer;
      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+     display: flex;
+     align-items: center;
 }
- .logo-btn .inner-square {
-     width: 12px;
-     height: 12px;
-     background: var(--color-text);
-     transition: background 0.4s;
+ .logo-btn img { 
+    width: 100%; 
+    height: auto; 
 }
- .logo-btn:hover {
-     background: var(--color-text);
-}
- .logo-btn:hover .inner-square {
-     background: white;
-     transform: rotate(90deg);
+ .logo-btn:hover img {
+     -webkit-filter: invert(1.2) drop-shadow(0 0 0.75rem #222);
+     filter: invert(1.2) drop-shadow(0 0 0.75rem #222);
 }
 /* HERO */
  .hero {
@@ -97,7 +107,7 @@
      align-items: center;
      background-color: var(--color-soft);
      border-bottom: 1px solid var(--color-border);
-     background-image: url('assets/hero.jpeg');
+     background-image: url('obras/RefugioInterior.jpeg');
      background-size: cover;
      background-position: center;
      background-repeat: no-repeat;
@@ -109,7 +119,10 @@
      letter-spacing: -0.02em;
  }
  .hero img {
-     width: 34vw;
+     display: block;
+     max-width: 40vw;
+     width: auto;
+     height: auto;
  }
  section {
      padding: 6rem 10%;
@@ -136,7 +149,7 @@
      flex-direction: column; 
      justify-content: center;
      background-color: var(--color-soft); 
-     background-image: url('assets/about.jpg');
+     background-image: url('assets/about.jpeg');
      background-size: cover;
      background-position: center;
      background-repeat: no-repeat;
@@ -362,31 +375,56 @@
          top: 1.5rem;
          right: 2.5rem;
     }
-     .nav-text {
-         display: none;
-    }
      .nav-icon {
          display: inline-block;
+    }   
+     .hamburger { 
+        display: flex; 
+        order: 2;
     }
-    #sobre-mi > div {
+     #main-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute; 
+        top: 100%; 
+        left: 0;
+        width: 100%; 
+        background: white;
+        padding: 2rem;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--color-border);
+    }
+     #main-nav.active { 
+        display: flex; 
+    }
+     .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        width: 100%;
+     }
+     .hero img {
+        max-width: 60vw;
+    }
+     #sobre-mi > div {
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
         max-width: 95% !important; 
     }
-    #title {
+     #title {
         font-size: 2rem !important; 
         padding: 2rem 1rem 0 1rem !important;
     }
-    #subtitle {
+     #subtitle {
         font-size: 1rem !important;
         padding: 0 1rem 2rem 1rem !important;
     }
-    .about-title {
+     .about-title {
         aspect-ratio: auto;
         min-height: 250px;
         padding: 1rem !important;
     }
-    .about-text {
+     .about-text {
         padding: 0 1rem;
     }
 }
@@ -401,5 +439,8 @@
     }
      .nav-links {
          gap: 1rem;
+    }
+    .hero img {
+        max-width: 80vw;
     }
 }
