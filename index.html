@@ -24,8 +24,9 @@
                 <img id="modal-img" src="" alt="Obra">
             </div>
             <div class="modal-info-side">
-                <h2 id="modal-title">Título</h2>
-                <div id="modal-desc" class="modal-desc"></div>
+                <h2 id="modal-title"></h2>
+                <h3 id="modal-size"></h3>
+                <div id="modal-sprt" class="modal-desc"></div>
                 <div id="modal-price" class="modal-price"></div>
             </div>
         </div>
@@ -46,7 +47,7 @@
     </header>
 
     <div id="hero-banner" class="hero">
-        <div style="width:100%; height:100%; backdrop-filter: blur(3px); display: grid; place-items: center;">
+        <div style="width:100%; height:100%; backdrop-filter: contrast(40%); display: grid; place-items: center;">
             <!--<h1>AMPARO</h1>-->
             <img src="assets/nombre.png">
         </div>
@@ -60,7 +61,7 @@
     <section id="sobre-mi">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
             <div class="about-title">  
-                <div style ="width:100%; height:100%; backdrop-filter: blur(1px);">              
+                <div style ="width:100%; height:100%; backdrop-filter: saturate(150%) grayscale(30%) blur(3px);">              
                     <h2 id="title"></h2>
                     <p id="subtitle"></p>
                 </div>
@@ -76,15 +77,16 @@
 
     <section id="contacto" class="contact-events">
         <div>
-            <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Agenda</h2>
+            <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Exhibiciones</h2>
             <div id="events-container"></div>
         </div>
         <div>
             <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Contacto</h2>
             <div class="contact-col">
-                <a href="#" class="contact-link-row"><i class="fa fa-instagram"></i> AMPARO_ART</a>
-                <a href="mailto:info@amparoart.com" class="contact-link-row"><i class="fa fa-envelope"></i> CONTACT@AMPAROART.COM</a>
-                <a href="tel:+34600000000" class="contact-link-row"><i class="fa fa-phone"></i> +34 600 000 000</a>
+                <a href="https://www.instagram.com/amparomoreno68" class="contact-link-row"><i class="fa fa-instagram"></i> @amparomoreno68</a> 
+                <a href="https://www.instagram.com/arte_amparo_moreno" class="contact-link-row"><i class="fa fa-instagram"></i> @arte_amparo_moreno</a>
+                <a href="mailto:amorenoancillo@gmail.com" class="contact-link-row"><i class="fa fa-envelope"></i> amorenoancillo@gmail.com</a>
+                <a href="https://wa.me/+34656840494?text=MESSAGE" target="_blank" class="contact-link-row"><i class="fa">&#xf232;</i> +34 656 84 04 94</a>
             </div>
         </div>
     </section>
@@ -95,23 +97,26 @@
 
     <script>
 
-        function openModal(item) {
+        function openModal(item) 
+        {
             document.getElementById('modal-img').src = item.img;
             document.getElementById('modal-title').innerText = item.title;
-            document.getElementById('modal-desc').innerText = item.desc;
+            document.getElementById('modal-size').innerHTML = item.size + (item.tech === "" ? '' : '<br>' + item.tech);
+            document.getElementById('modal-sprt').innerHTML = 'Soporte: ' + item.sprt + (item.mrc === "" ? '' : '<br>Marco: ' + item.mrc);
             document.getElementById('modal-price').innerText = item.price;
             document.getElementById('modal-price').innerText = item.sold ? "VENDIDO\nCOLECCIÓN PRIVADA" : item.price;
             document.getElementById('modal-overlay').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
+        function closeModal() 
+        {
             document.getElementById('modal-overlay').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
-        async function init() {
-
+        async function init() 
+        {
             try {
 
                 const [featuredData, galleryData, eventsData, aboutData] = await Promise.all([
@@ -179,8 +184,11 @@
                 {
                     evenContainer.innerHTML += `
                         <div class="event-item">
-                            <strong>${item.name}</strong>
-                            <span class="event-date">${item.date} - ${item.loc}</span>
+                            <strong>${item.loc}</strong>
+                            <span class="event-date">
+                                ${item.date === "" ? '' : item.date + ' - '}
+                                ${item.name === "" ? '' : item.name + ' - '}
+                            </span>
                         </div>`;
                 });
                 
