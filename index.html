@@ -162,8 +162,7 @@
                         </div>
                         <div class="card-content">
                             <h3>${item.title}</h3>
-                            <span class="price">${item.sold ? 'Vendido' : item.price}</span>
-                            <span style="text-align:right">${item.size}</span>
+                            <span class="price">${item.sold ? 'Vendido' : item.price}</span> <span style="text-align:right; opacity:0.7"> - ${item.size}</span>
                         </div>`;                
 
                     featContainer.appendChild(div);
