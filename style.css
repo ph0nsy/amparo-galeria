@@ -357,6 +357,11 @@
     }
 }
  @media (max-width: 768px) {
+     .modal-close{
+         font-size: 3rem;
+         top: 1.5rem;
+         right: 2.5rem;
+    }
      .nav-text {
          display: none;
     }
@@ -386,6 +391,11 @@
     }
 }
  @media (max-width: 400px) {
+     .modal-close{
+         font-size: 4rem;
+         top: 0.65rem;
+         right: 1rem;
+    }
      nav {
         gap: 1.5rem;
     }
