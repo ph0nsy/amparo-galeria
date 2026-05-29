@@ -49,24 +49,24 @@
 
     <div id="hero-banner" class="hero">
         <div style="width:100%; height:100%; backdrop-filter: contrast(100%); display: grid; place-items: center;">
-            <!--<h1>AMPARO</h1>-->
             <img src="assets/nombre.png">
         </div>
     </div>
-
+    
     <section id="destacados">
         <h2 class="section-title">Obras Destacadas</h2>
         <div class="grid-featured" id="featured-container"></div>
     </section>
-
+    
     <section id="sobre-mi">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 90%;">
             <div class="about-title">  
-                <div style ="position: absolute; width:100%; height:100%; display: flex; flex-direction: column; justify-content: flex-end; filter: drop-shadow(0 0 1rem #111)">              
+                <div class="about-inner">              
                     <h2 id="title"></h2>
                     <p id="subtitle"></p>
                 </div>
             </div>
+            <div id="mobile-title"></div>
             <div class="about-text"></div>
         </div>
     </section>
@@ -139,6 +139,7 @@
 
                 document.getElementById('title').innerHTML += `${aboutData.titulo}`;
                 document.getElementById('subtitle').innerHTML += `${aboutData.subtitulo}`;
+                document.getElementById('mobile-title').innerHTML += '<h2>' + `${aboutData.titulo}` + '</h2><h3>' + `${aboutData.subtitulo}` + '</h3>';
                 document.querySelector('.about-text').innerHTML = aboutData.parrafos.map(p => `<p>${p}</p>`).join('');
 
                 const featContainer = document.getElementById('featured-container');
