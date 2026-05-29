@@ -123,6 +123,7 @@
      max-width: 40vw;
      width: auto;
      height: auto;
+     filter: drop-shadow(0 0 2rem #eee);
  }
  section {
      padding: 6rem 10%;
@@ -145,7 +146,10 @@
 }
  .about-title{
      aspect-ratio: 4/5; 
+     position: relative;
+     padding: 0 !important;
      display: flex; 
+     overflow: hidden;
      flex-direction: column; 
      justify-content: center;
      background-color: var(--color-soft); 
@@ -159,6 +163,7 @@
  #title{
     font-family: var(--font-title); 
     font-size: 4rem;
+    line-height: 90%;
     padding: 4rem 4rem 0 4rem; 
  }
  #subtitle{
