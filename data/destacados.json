@@ -1,5 +1,5 @@
 [
-    { "img": "obras/ArmaduraToledana.jpg", "title": "Una Armadura Toledana", "size": "30 x 170 cm", "tech": "Técnica Mixta", "sprt": "Chapa de Hierro", "mrc": "", "price": "2.000€", "sold": false },
+    { "img": "obras/Julieta.jpg", "title": "Julieta", "size": "63 x 73 cm", "tech": "Técnica Mixta", "sprt": "Chapa de Hierro", "mrc": "El marco es parte de la obra y se ha trabajado con una técnica mixta usando soplete y óleo.", "price": "1.600€", "sold": false },
     { "img": "obras/ViajeHaciaCalma.jpg", "title": "El Viaje Hacia La Calma", "size": "93 x 113 cm", "tech": "Técnica Mixta", "sprt": "Chapa de Hierro", "mrc": "El marco es parte de la obra y se ha trabajado con una técnica mixta usando soplete y óleo.", "price": "3.500€", "sold": false },
     { "img": "obras/AlquimiaPurpura.jpeg", "title": "Alquimia Púrpura", "size": "50 x 50 cm", "tech": "Acuarela en Medio Ácido", "sprt": "Chapa de Hierro", "mrc": "", "price": "600€", "sold": false },
     { "img": "obras/Equilibrio.jpeg", "title": "El Equilibrio", "size": "140 x 102 cm", "tech": "Acuarela en Medio Ácido", "sprt": "Chapa de Hierro", "mrc": "", "price": "2.500€", "sold": false }
