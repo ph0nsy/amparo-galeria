@@ -139,7 +139,7 @@
 
                 document.getElementById('title').innerHTML += `${aboutData.titulo}`;
                 document.getElementById('subtitle').innerHTML += `${aboutData.subtitulo}`;
-                document.getElementById('mobile-title').innerHTML += '<h2>' + `${aboutData.titulo}` + '</h2><h3>' + `${aboutData.subtitulo}` + '</h3>';
+                document.getElementById('mobile-title').innerHTML += '<h2>' + `${aboutData.titulo}` + '</h2><h3 style="font-family: var(--font-accent); ">' + `${aboutData.subtitulo}` + '</h3>';
                 document.querySelector('.about-text').innerHTML = aboutData.parrafos.map(p => `<p>${p}</p>`).join('');
 
                 const featContainer = document.getElementById('featured-container');
