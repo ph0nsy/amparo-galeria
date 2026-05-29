@@ -19,15 +19,15 @@
 <body>
     <div id="modal-overlay">
         <div class="modal-container">
-            <div class="modal-close" onclick="closeModal()">&times;</div>
+            <div class="modal-close" onclick="closeModal()"><b>&times;</b></div>
             <div class="modal-image-side">
                 <img id="modal-img" src="" alt="Obra">
             </div>
             <div class="modal-info-side">
                 <h2 id="modal-title"></h2>
                 <h3 id="modal-size"></h3>
-                <div id="modal-sprt" class="modal-desc"></div>
                 <div id="modal-price" class="modal-price"></div>
+                <div id="modal-sprt" class="modal-desc"></div>
             </div>
         </div>
     </div>
@@ -113,7 +113,7 @@
             document.getElementById('modal-img').src = item.img;
             document.getElementById('modal-title').innerText = item.title;
             document.getElementById('modal-size').innerHTML = item.size + (item.tech === "" ? '' : '<br>' + item.tech);
-            document.getElementById('modal-sprt').innerHTML = 'Soporte: ' + item.sprt + (item.mrc === "" ? '' : '<br>Marco: ' + item.mrc);
+            document.getElementById('modal-sprt').innerHTML = '<b>Soporte:</b> ' + item.sprt + (item.mrc === "" ? '' : '<br><b>Marco:</b> ' + item.mrc);
             document.getElementById('modal-price').innerText = item.price;
             document.getElementById('modal-price').innerText = item.sold ? "VENDIDO\nCOLECCIÓN PRIVADA" : item.price;
             document.getElementById('modal-overlay').style.display = 'flex';
@@ -182,7 +182,7 @@
                     div.innerHTML = `
                         <div class="img-wrapper">
                             ${soldHtml}
-                            <img src="${item.img}">
+                            <img style="object-position: ${item.focus === "" ? '50% 50%' : item.focus}" src="${item.img}">
                         </div>
                         <div class="gallery-info">
                             <strong>${item.title}</strong>
@@ -197,10 +197,10 @@
                 {
                     evenContainer.innerHTML += `
                         <div class="event-item">
-                            <strong>${item.loc}</strong>
+                            <strong>${item.name}</strong>
                             <span class="event-date">
                                 ${item.date === "" ? '' : item.date + ' - '}
-                                ${item.name === "" ? '' : item.name + ' - '}
+                                ${item.loc === "" ? '' : item.loc + ''}
                             </span>
                         </div>`;
                 });

@@ -308,7 +308,7 @@
 }
  .modal-info-side {
      flex: 1;
-     padding: 10% 5%;
+     padding: 5% 5%;
      border-left: 1px solid var(--color-border);
      display: flex;
      flex-direction: column;
@@ -317,19 +317,19 @@
  .modal-info-side h2 {
      font-family: var(--font-title);
      font-size: 3rem;
-     margin-bottom: 2rem;
+     margin-bottom: 1rem;
 }
  .modal-info-side h3 {
      font-family: var(--font-body);
      font-size: 2rem;
-     margin-bottom: 2rem;
+     margin-bottom: 1rem;
 }
  .modal-price {
      font-family: var(--font-accent);
      letter-spacing: 0.2em;
      font-weight: 600;
-     padding-top: 2rem;
-     border-top: 1px solid var(--color-text);
+     padding-bottom: 0.25rem;
+     border-bottom: 1px solid var(--color-text);
 }
 /* FOOTER & CONTACT */
  .contact-events {
@@ -456,6 +456,39 @@
      .about-text {
         padding: 0 1rem;
     }
+    .modal-container {
+        flex-direction: column;
+        overflow-y: auto; 
+    }
+    
+    .modal-image-side {
+        flex: none; 
+        height: 60vh;
+        padding: 2rem;
+    }
+ 
+    .modal-image-side img {
+        max-width: 100%;
+        max-height: 100%; 
+        object-fit: contain; 
+    }
+    
+    .modal-info-side {
+        flex: none;
+        padding: 0.5rem 2rem;
+        border-left: none;
+        border-top: 1px solid var(--color-border);
+    }
+    
+    /* Reducimos fuentes para que quepan bien en móvil */
+    .modal-info-side h2 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .modal-info-side h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+    
+    .modal-close {
+        top: 1rem;
+        right: 1.5rem;
+        padding: 0 0.5rem;
+    }
 }
  @media (max-width: 400px) {
      .modal-close{
@@ -485,4 +518,10 @@
         display: none;
         padding: 0 1rem;
     }
+    .modal-image-side {
+        flex: none; 
+        height: 55vh;
+        padding: 2rem;
+    }
+
 }
